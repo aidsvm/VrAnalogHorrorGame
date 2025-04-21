@@ -4,7 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GasStation/Scene/GasStation.unity
+    guid: 10d1f93d09d0b42b4884677cc190d849
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 198505399e9104b64bd84642c83b60a5, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 323bac28b82024d6b98a7ba6c6ac02d2, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 95c903ff013fd4ad1965f7d8373c7b6b, type: 2}

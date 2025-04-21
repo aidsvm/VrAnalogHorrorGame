@@ -10,12 +10,13 @@ public class TransitionManager : MonoBehaviour
     // public float effectDuration = 2f;
 
     // [Header("Audio")]
-    // public AudioSource ambientAudio;     
-    // public AudioSource glitchAudio;           
+    public AudioSource ambientAudio;     
+    public AudioSource glitchAudio;           
 
     [Header("Lighting")]
     public Light[] lightsToFlicker;
     public float flickerDuration = 1f;
+    public Color endColor = Color.red;
 
     // [Header("Spectral")]
     // public GameObject ghostPrefab;
@@ -29,7 +30,11 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator TransitionSequence()
     {
-    
+        // 1) Fade out ambient audio
+        ambientAudio.Stop();
+        // 2) Play glitch audio
+        glitchAudio.Play();
+
         // 3) Flicker lights
         float flickerEnd = Time.time + flickerDuration;
         while (Time.time < flickerEnd)
@@ -38,8 +43,10 @@ public class TransitionManager : MonoBehaviour
                 L.enabled = !L.enabled;
             yield return new WaitForSeconds(0.1f);
         }
-        // ensure lights end off (or on, your choice)
-        foreach (var L in lightsToFlicker)
-            L.enabled = false;
+    
+        foreach (var L in lightsToFlicker) {
+            L.enabled = true;
+            L.color   = endColor;
+        }
     }
 }
