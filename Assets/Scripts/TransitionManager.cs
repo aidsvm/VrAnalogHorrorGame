@@ -17,6 +17,7 @@ public class TransitionManager : MonoBehaviour
     public Light[] lightsToFlicker;
     public float flickerDuration = 1f;
     public Color endColor = Color.red;
+    public Slender;
 
     // [Header("Spectral")]
     // public GameObject ghostPrefab;
@@ -25,6 +26,12 @@ public class TransitionManager : MonoBehaviour
 
     public void StartHorrorTransition()
     {
+        if (Slender != null)
+        {
+            Slender.SetPositionIndex(0);
+            
+        }
+
         StartCoroutine(TransitionSequence());
     }
 
