@@ -27,10 +27,11 @@ public class TransitionManager : MonoBehaviour
     public void StartHorrorTransition()
     {
         slenderMovement mover = Slender.GetComponent<slenderMovement>();
+        Animation anim = Slender.GetComponent<Animation>();
         if (mover != null)
         {
             mover.SetPositionIndex(0);
-            
+            anim.Play("Idle");
         }
 
         StartCoroutine(TransitionSequence());

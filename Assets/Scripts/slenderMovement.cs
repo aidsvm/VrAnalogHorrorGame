@@ -6,13 +6,9 @@ using UnityEngine.Events;
 public class slenderMovement : MonoBehaviour
 {
     public GameObject[] slenderPositions;
+    public GameObject player;
     public int currPos = 0;
     public UnityEvent onPositionChanged;
-
-    private void Awake()
-    {
-        // ApplyPosition();
-    }
 
     public void SetPositionIndex(int index)
     {
