@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public class slenderMovement : MonoBehaviour
 {
     public GameObject[] slenderPositions;
-    public currPos = 0;
+    public int currPos = 0;
     public UnityEvent onPositionChanged;
 
     private void Awake()
     {
-        ApplyPosition();
+        // ApplyPosition();
     }
 
     public void SetPositionIndex(int index)
