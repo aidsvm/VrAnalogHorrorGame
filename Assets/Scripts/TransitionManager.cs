@@ -11,7 +11,8 @@ public class TransitionManager : MonoBehaviour
 
     // [Header("Audio")]
     public AudioSource ambientAudio;     
-    public AudioSource glitchAudio;           
+    public AudioSource glitchAudio;
+    public AudioSource slenderAudio;        
 
     [Header("Lighting")]
     public Light[] lightsToFlicker;
@@ -25,16 +26,26 @@ public class TransitionManager : MonoBehaviour
 
 
     public void StartHorrorTransition()
+{
+    slenderMovement mover = Slender.GetComponent<slenderMovement>();
+    Animation anim = Slender.GetComponent<Animation>();
+    if (mover != null)
     {
-        slenderMovement mover = Slender.GetComponent<slenderMovement>();
-        Animation anim = Slender.GetComponent<Animation>();
-        if (mover != null)
-        {
-            mover.SetPositionIndex(0);
-            anim.Play("Idle");
-        }
+        // kick off the timed‐play routine
+        StartCoroutine(PlaySlenderAudioForSeconds(3f));
+        
+        mover.SetPositionIndex(0);
+        anim.Play("Idle");
+    }
 
-        StartCoroutine(TransitionSequence());
+    StartCoroutine(TransitionSequence());
+}
+
+    private IEnumerator PlaySlenderAudioForSeconds(float playDuration)
+    {
+        slenderAudio.Play();
+        yield return new WaitForSeconds(playDuration);
+        slenderAudio.Stop();
     }
 
     private IEnumerator TransitionSequence()
