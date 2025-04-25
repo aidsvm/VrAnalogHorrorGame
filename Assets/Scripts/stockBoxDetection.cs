@@ -19,6 +19,8 @@ public class stockBoxDetection : MonoBehaviour
            {
                onStocked.Invoke();
                Debug.Log("All items stocked!");
+               itemsNeeded = 0; // Prevents further stocking
+                stockedItems = 0; // Resets the count
            }
        }
    }
