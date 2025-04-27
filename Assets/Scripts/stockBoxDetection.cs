@@ -7,6 +7,7 @@ public class stockBoxDetection : MonoBehaviour
 {
    public int itemsNeeded = 2;
    public int stockedItems = 0;
+   public GameObject stockArea;
    public UnityEvent onStocked;
 
    private void OnTriggerEnter(Collider other)
@@ -18,6 +19,7 @@ public class stockBoxDetection : MonoBehaviour
            if (stockedItems >= itemsNeeded)
            {
                onStocked.Invoke();
+                stockArea.SetActive(false);
                Debug.Log("All items stocked!");
            }
        }
