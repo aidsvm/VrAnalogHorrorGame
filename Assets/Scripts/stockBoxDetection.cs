@@ -7,6 +7,7 @@ public class stockBoxDetection : MonoBehaviour
 {
    public int itemsNeeded = 4;
    public int stockedItems = 0;
+   public GameObject stockArea;
    public UnityEvent onStocked;
    public InstructionManager uiManager;
 

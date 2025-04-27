@@ -26,15 +26,29 @@ public class TransitionManager : MonoBehaviour
 
     public void StartHorrorTransition()
     {
+        Slender.SetActive(true);
         slenderMovement mover = Slender.GetComponent<slenderMovement>();
         Animation anim = Slender.GetComponent<Animation>();
         if (mover != null)
         {
             mover.SetPositionIndex(0);
             anim.Play("Idle");
+            
+        }
+        StartCoroutine(TransitionSequence());
+    }
+
+    public void StartHorrorTransition2()
+    {
+        Slender.SetActive(true);
+        slenderMovement mover = Slender.GetComponent<slenderMovement>();
+        Animation anim = Slender.GetComponent<Animation>();
+        if (mover != null)
+        {
+            mover.SetPositionIndex(1);
+            anim.Play("Scream");
         }
 
-        StartCoroutine(TransitionSequence());
     }
 
     private IEnumerator TransitionSequence()

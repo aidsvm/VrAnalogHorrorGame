@@ -67,9 +67,6 @@ public class SwitchController : MonoBehaviour
     {
         isOn = !isOn;
 
-        // optional: move the knob up/down (uncomment if needed)
-        // mainKnob.localPosition = isOn ? upPos : downPos;
-
         // rotate the knob around its local X axis
         mainKnob.localEulerAngles = isOn ? upRotEuler : downRotEuler;
 
@@ -79,14 +76,12 @@ public class SwitchController : MonoBehaviour
                 ? originalColors[i]
                 : offColor;
 
-        // 1) Stop whatever audio the TransitionManager is playing:
         if (_transitionManager.ambientAudio.isPlaying)
             _transitionManager.ambientAudio.Stop();
 
         if (_transitionManager.glitchAudio.isPlaying)
             _transitionManager.glitchAudio.Stop();
 
-        // 2) Start _your_ ambient audio
         if (!myAmbientAudio.isPlaying)
             myAmbientAudio.Play();
 
