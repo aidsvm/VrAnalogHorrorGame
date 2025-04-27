@@ -26,6 +26,7 @@ public class TransitionManager : MonoBehaviour
 
     public void StartHorrorTransition()
     {
+        Slender.SetActive(true);
         slenderMovement mover = Slender.GetComponent<slenderMovement>();
         Animation anim = Slender.GetComponent<Animation>();
         if (mover != null)
