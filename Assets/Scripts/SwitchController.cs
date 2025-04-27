@@ -3,6 +3,20 @@ using System.Collections;
 
 public class SwitchController : MonoBehaviour
 {
+
+    public AudioSource myAmbientAudio;
+
+    private TransitionManager _transitionManager;
+
+    void Awake()
+    {
+        // find the TransitionManager anywhere in the scene
+        _transitionManager = FindObjectOfType<TransitionManager>();
+
+        if (_transitionManager == null)
+            Debug.LogWarning("No TransitionManager found in scene!");
+    }
+
     [Header("Knob Transform")]
     public Transform mainKnob;
     [Tooltip("How far the knob moves in local Y (if you still want positional fallback)")]
@@ -59,6 +73,17 @@ public class SwitchController : MonoBehaviour
             ceilingLights[i].color = isOn
                 ? originalColors[i]
                 : offColor;
+
+        // 1) Stop whatever audio the TransitionManager is playing:
+        if (_transitionManager.ambientAudio.isPlaying)
+            _transitionManager.ambientAudio.Stop();
+
+        if (_transitionManager.glitchAudio.isPlaying)
+            _transitionManager.glitchAudio.Stop();
+
+        // 2) Start _your_ ambient audio
+        if (!myAmbientAudio.isPlaying)
+            myAmbientAudio.Play();
 
         // TODO: any additional power logic here
     }
