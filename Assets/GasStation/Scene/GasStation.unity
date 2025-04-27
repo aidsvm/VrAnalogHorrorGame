@@ -468,10 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0855d1ceddc447f8a305368128f3198a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supportHDRTextures: 1
-  supportDX11: 0
-  isSupported: 1
-  createdMaterials: []
 --- !u!4 &66064307
 Transform:
   m_ObjectHideFlags: 0
@@ -980,6 +976,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14277406, y: 0.23722386, z: 0.09079511}
   m_Center: {x: -0.0000000033324992, y: 0.11821384, z: 0.0000009790149}
+--- !u!1 &171082511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+  m_PrefabInstance: {fileID: 501499938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &171082513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171082511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a51dff03cc34349b1fff152e2527bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTrashCount: 5
+  onAllTrashCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &171082514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171082511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.54142857, y: 1.2428584, z: 0.5186682}
+  m_Center: {x: -0.08519173, y: 0.121429205, z: 0.13902426}
 --- !u!1 &196104610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1550,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 171082513}
+    - targetCorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 171082514}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
 --- !u!114 &523320946
 MonoBehaviour:
@@ -5393,6 +5449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsNeeded: 6
   stockedItems: 0
+  stockArea: {fileID: 1206592001}
   onStocked:
     m_PersistentCalls:
       m_Calls:
