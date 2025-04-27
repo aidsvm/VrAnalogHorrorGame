@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - StockableItem
+  - Trash
   layers:
   - Default
   - TransparentFX
