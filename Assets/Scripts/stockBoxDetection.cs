@@ -19,6 +19,7 @@ public class stockBoxDetection : MonoBehaviour
            stockedItems++;
            if (stockedItems >= itemsNeeded){
             onStocked.Invoke();
+            stockArea.SetActive(false);
             uiManager.ShowInstruction(
                 "Power Failure Detected.\n" +
                 "Beginning emergency battery backup system.\n" +
