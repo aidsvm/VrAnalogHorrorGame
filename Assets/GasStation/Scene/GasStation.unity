@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 48141924}
   - component: {fileID: 48141923}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: instructionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -291.09, y: 180.5}
+  m_AnchoredPosition: {x: -262.3, y: 180.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48141923
@@ -179,7 +179,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Operating System Loaded!
+  m_text: 'Good evening!
+
+    Here is your current objective:
+
+    Customers are
+    going to be really hungry! Restock the cereal on the shelf right across the desk.
+
+    As
+    soon as you are completed with this task please report back to this monitor...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -242,7 +250,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -259.7819, w: 0}
+  m_margin: {x: 0, y: 0, z: -481.61777, w: -348.86987}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -435,7 +443,7 @@ MonoBehaviour:
   m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 3
+  m_SoftShadowQuality: 0
 --- !u!1 &66064305
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,12 +984,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14277406, y: 0.23722386, z: 0.09079511}
   m_Center: {x: -0.0000000033324992, y: 0.11821384, z: 0.0000009790149}
---- !u!1 &171082511 stripped
+--- !u!1 &171082511
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
-  m_PrefabInstance: {fileID: 501499938}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &171082513
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171082513}
+  - component: {fileID: 171082512}
+  m_Layer: 0
+  m_Name: InstructionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &171082512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -990,46 +1010,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 171082511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a51dff03cc34349b1fff152e2527bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 90023ac1c92e74724834aa4b26b6719e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTrashCount: 5
-  onAllTrashCollected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 106324913}
-        m_TargetAssemblyTypeName: TransitionManager, Assembly-CSharp
-        m_MethodName: StartHorrorTransition2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!65 &171082514
-BoxCollider:
+  instructionText: {fileID: 48141923}
+--- !u!4 &171082513
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171082511}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.54142857, y: 1.2428584, z: 0.5186682}
-  m_Center: {x: -0.08519173, y: 0.121429205, z: 0.13902426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &196104610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,11 +1552,41 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 171082513}
-    - targetCorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 171082514}
+      addedObject: {fileID: 501499940}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+--- !u!1 &501499939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2538208172927381571, guid: 5a9667695bf000243b1cc3a22006ecaa, type: 3}
+  m_PrefabInstance: {fileID: 501499938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &501499940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501499939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a51dff03cc34349b1fff152e2527bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTrashCount: 5
+  onAllTrashCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 106324913}
+        m_TargetAssemblyTypeName: TransitionManager, Assembly-CSharp
+        m_MethodName: StartHorrorTransition2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &523320946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,7 +2611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -2595,7 +2624,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.05
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3897,7 +3926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 1384322935}
+  m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -4207,6 +4236,7 @@ MonoBehaviour:
   - {fileID: 785863392}
   - {fileID: 574117892}
   offColor: {r: 0, g: 0, b: 0, a: 1}
+  instructionText: {fileID: 48141923}
 --- !u!1 &1206592001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,7 +5477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d87edd08483414a8b9d98e38ae68ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsNeeded: 6
+  itemsNeeded: 4
   stockedItems: 0
   stockArea: {fileID: 1206592001}
   onStocked:
@@ -5465,6 +5495,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  uiManager: {fileID: 171082512}
 --- !u!65 &1386162368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7256,7 +7287,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973749632}
   m_LocalRotation: {x: 0.02842022, y: 0.9186675, z: -0.055582386, w: 0.39006796}
-  m_LocalPosition: {x: 0, y: 0, z: -26.11}
+  m_LocalPosition: {x: 0, y: 0, z: -26.0914}
   m_LocalScale: {x: 0.0005, y: 0.0006, z: 0.001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7265,7 +7296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 7.14, y: 134.02, z: 0.511}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -10.732, y: 8.973}
+  m_AnchoredPosition: {x: -10.729, y: 8.973}
   m_SizeDelta: {x: 929.5, y: 492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2037915830
@@ -7977,6 +8008,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 171082513}
   - {fileID: 1015571887}
   - {fileID: 705507995}
   - {fileID: 1642748436}

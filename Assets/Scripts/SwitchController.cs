@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;                        // ← for TextMeshProUGUI
 using System.Collections;
 
 public class SwitchController : MonoBehaviour
@@ -38,6 +39,10 @@ public class SwitchController : MonoBehaviour
     private Vector3 downRotEuler, upRotEuler;
     private bool isOn = false;
     private Color[] originalColors;
+
+    [Header("UI Text (World-Space Canvas)")]
+    [Tooltip("Drag your wall-UI TextMeshProUGUI here")]
+    public TextMeshProUGUI instructionText;
 
     void Start()
     {
@@ -80,6 +85,15 @@ public class SwitchController : MonoBehaviour
         if (!myAmbientAudio.isPlaying)
             myAmbientAudio.Play();
 
-        // TODO: any additional power logic here
+        if (isOn)
+        {
+            // **All** of your power-reset instructions live here now:
+            instructionText.text =
+                "Power system reset. Continue with your tasks please.\n" +
+                "Our gas station must be in clean and immaculate conditions, " +
+                "please pick up the trash outside by the gas pumps to ensure " +
+                "a happy fueling experience!";
+        }
+
     }
 }
