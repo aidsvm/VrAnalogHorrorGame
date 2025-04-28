@@ -2130,8 +2130,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 3
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &638977878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6077,6 +6077,7 @@ MonoBehaviour:
   - {fileID: 1704098397}
   player: {fileID: 598746320}
   currPos: 0
+  rotationSpeed: 2
   onPositionChanged:
     m_PersistentCalls:
       m_Calls: []

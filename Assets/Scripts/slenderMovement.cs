@@ -8,7 +8,19 @@ public class slenderMovement : MonoBehaviour
     public GameObject[] slenderPositions;
     public GameObject player;
     public int currPos = 0;
+    public float rotationSpeed = 2f;
     public UnityEvent onPositionChanged;
+
+    public void Update()
+    {
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+        direction.y = 0;
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
 
     public void SetPositionIndex(int index)
     {
