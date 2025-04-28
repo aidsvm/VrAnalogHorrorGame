@@ -18,7 +18,7 @@ public class coords : MonoBehaviour
         {
             if (transform.localPosition != lastPosition)
             {
-                Debug.Log("Player moved to: " + transform.localPosition);
+                // Debug.Log("Player moved to: " + transform.localPosition);
                 lastPosition = transform.localPosition;
             }
             yield return new WaitForSeconds(1f); // check every 1 second
