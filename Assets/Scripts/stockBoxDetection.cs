@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class stockBoxDetection : MonoBehaviour
 {
-   public int itemsNeeded = 4;
+   public int itemsNeeded = 1;
    public int stockedItems = 0;
    public GameObject stockArea;
    public UnityEvent onStocked;
