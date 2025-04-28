@@ -85,11 +85,11 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator SequentialFlicker()
     {
-        foreach (var L in lightsToFlicker)
-        {
-            L.enabled = false;
-        }
+    foreach (var L in lightsToFlicker)
+        L.enabled = false;
 
+    while (true)
+    {
         foreach (var L in lightsToFlicker)
         {
             L.enabled = true;
@@ -98,6 +98,6 @@ public class TransitionManager : MonoBehaviour
             L.enabled = false;
             yield return new WaitForSeconds(seqOffDuration);
         }
-        
+    }
     }
 }
