@@ -8,8 +8,6 @@ public class slenderCollision : MonoBehaviour
     private Animator anim;
     public GameObject Slender;
     public GameObject outsideZone;
-    private bool isScreaming = false;
-
     void Awake()
     {
         anim = Slender.GetComponent<Animator>();
@@ -18,22 +16,7 @@ public class slenderCollision : MonoBehaviour
             Debug.LogError("Animator not found");
         }
     }
-    // private void Update()
-    // {
-    //     if (anim.GetCurrentAnimatorStateInfo(0).IsName("Scream"))
-    //     {   
-    //         Debug.Log("He's screaming!");
-    //         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !isScreaming)
-    //         {
-    //             isScreaming = false;
-    //             Debug.Log("Scream animation is complete!");
-    //         }
-    //         else
-    //         {
-    //             isScreaming = true;
-    //         }
-    //     }
-    // }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

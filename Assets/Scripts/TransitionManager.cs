@@ -9,6 +9,8 @@ public class TransitionManager : MonoBehaviour
     // public PostProcessVolume postVolume;       
     // public float effectDuration = 2f;
 
+    public int transition = 0;
+
     [Header("Audio")]
     public AudioSource ambientAudio;     
     public AudioSource glitchAudio;   
@@ -20,38 +22,31 @@ public class TransitionManager : MonoBehaviour
     public float flickerDuration = 1f;
     public Color endColor = Color.red;
 
-     [Tooltip("How long each light stays on during sequential flicker")]
+    [Tooltip("How long each light stays on during sequential flicker")]
     public float seqOnDuration = 0.2f;
     [Tooltip("Pause between each light during sequential flicker")]
     public float seqOffDuration = 0.1f;
 
     public GameObject Slender;
 
-
     public void StartHorrorTransition()
     {
         Slender.SetActive(true);
         slenderMovement mover = Slender.GetComponent<slenderMovement>();
-        Animation anim = Slender.GetComponent<Animation>();
         if (mover != null)
         {
             mover.SetPositionIndex(0);
-            // anim.Play("Idle");
-            
         }
         StartCoroutine(TransitionSequence());
+        transition++;
     }
 
     public void StartHorrorTransition2()
     {
         Slender.SetActive(true);
-        var mover = Slender.GetComponent<slenderMovement>();
-        var anim  = Slender.GetComponent<Animation>();
+        slenderMovement mover = Slender.GetComponent<slenderMovement>();
         if (mover != null)
-        {
             mover.SetPositionIndex(1);
-            // anim.Play("Scream");
-        }
 
         // play the new audio for transition 2
         if (transition2Audio != null)
@@ -60,6 +55,7 @@ public class TransitionManager : MonoBehaviour
         // start the sequential flicker
         StartCoroutine(SequentialFlicker());
         StartCoroutine(TransitionSequence2());
+        transition++;
     }
 
     private IEnumerator TransitionSequence()
@@ -67,6 +63,7 @@ public class TransitionManager : MonoBehaviour
         // 1) Fade out ambient audio
         ambientAudio.Stop();
         // 2) Play glitch audio
+        Debug.Log("Glitched audio should play");
         glitchAudio.Play();
 
         // 3) Flicker lights
