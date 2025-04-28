@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class TrashCan : MonoBehaviour
 {
     [Tooltip("How many trash pieces must be dropped before the scare event")]
-    public int totalTrashCount = 1;
+    public int totalTrashCount = 5;
 
     [Tooltip("Event to fire when all trash is in the can")]
     public UnityEvent onAllTrashCollected;
