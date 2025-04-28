@@ -22,17 +22,26 @@ public class slenderCollision : MonoBehaviour
             anim.SetBool("PlayerNear", true);
             Debug.Log("Player entered his domain");
         }
+        else
+        {
+            Debug.Log("Something entered his domain");
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             anim.SetBool("PlayerNear", false);
+            Debug.Log("Player exited his domain");
+        }
+        else
+        {
+            Debug.Log("Something exited his domain");
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(anim.GetBool("PlayerNear"));
-    }
+    // private void Update()
+    // {
+    //     Debug.Log(anim.GetBool("PlayerNear"));
+    // }
 }

@@ -36,7 +36,7 @@ public class TransitionManager : MonoBehaviour
         if (mover != null)
         {
             mover.SetPositionIndex(0);
-            anim.Play("Idle");
+            // anim.Play("Idle");
             
         }
         StartCoroutine(TransitionSequence());
@@ -50,7 +50,7 @@ public class TransitionManager : MonoBehaviour
         if (mover != null)
         {
             mover.SetPositionIndex(1);
-            anim.Play("Scream");
+            // anim.Play("Scream");
         }
 
         // play the new audio for transition 2
@@ -59,6 +59,7 @@ public class TransitionManager : MonoBehaviour
 
         // start the sequential flicker
         StartCoroutine(SequentialFlicker());
+        StartCoroutine(TransitionSequence2());
     }
 
     private IEnumerator TransitionSequence()
@@ -82,6 +83,19 @@ public class TransitionManager : MonoBehaviour
             L.color   = endColor;
         }
     }
+    private IEnumerator TransitionSequence2()
+    {
+        while (true)
+        {
+            var L = lightsToFlicker[1];
+            if (Random.value > 0.5f)
+            {
+                L.enabled = !L.enabled;
+            }
+            float waitTime = Random.Range(0.05f, 0.3f);
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
 
     private IEnumerator SequentialFlicker()
     {
@@ -90,8 +104,14 @@ public class TransitionManager : MonoBehaviour
 
     while (true)
     {
+        int i = 0;
         foreach (var L in lightsToFlicker)
         {
+            i++;
+            if (i == 2)
+            {
+                continue;
+            }
             L.enabled = true;
             yield return new WaitForSeconds(seqOnDuration);
 

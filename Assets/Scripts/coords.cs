@@ -1,12 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine; 
-using UnityEngine.Events;
+using UnityEngine;
 
 public class coords : MonoBehaviour
 {
-    private void Update()
+    private Vector3 lastPosition;
+
+    private void Start()
     {
-        Debug.Log("Player position: " + transform.localPosition);
+        lastPosition = transform.localPosition;
+        StartCoroutine(LogPositionIfMoved());
+    }
+
+    private IEnumerator LogPositionIfMoved()
+    {
+        while (true)
+        {
+            if (transform.localPosition != lastPosition)
+            {
+                Debug.Log("Player moved to: " + transform.localPosition);
+                lastPosition = transform.localPosition;
+            }
+            yield return new WaitForSeconds(1f); // check every 1 second
+        }
     }
 }
