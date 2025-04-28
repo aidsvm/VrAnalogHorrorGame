@@ -13,14 +13,21 @@ public class slenderMovement : MonoBehaviour
     public GameObject Slender;
     public GameObject outsideZone;
     private Animator anim;
+    private AudioSource glitchAudio;
 
-    public void OnScreamEnd()
+    private void Start()
     {
         anim = GetComponent<Animator>();
+        glitchAudio = GetComponent<AudioSource>();
+    }
+    public void OnScreamEnd()
+    {
         Debug.Log("Scream animation finished!");
         anim.SetBool("HasScreamed", true);
+        glitchAudio.Stop();
         Slender.SetActive(false);
         outsideZone.SetActive(false);
+        // StartCoroutine(ScreamFinished());
     }
     public void Update()
     {
@@ -47,8 +54,12 @@ public class slenderMovement : MonoBehaviour
     }
 
     private void ApplyPosition()
-    {
+    {   
         transform.localPosition = slenderPositions[currPos].transform.localPosition;
         transform.localRotation = slenderPositions[currPos].transform.localRotation;
+    }
+    private IEnumerator ScreamFinished()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }

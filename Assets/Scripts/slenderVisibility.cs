@@ -3,33 +3,54 @@ using UnityEngine;
 
 public class slenderVisibility : MonoBehaviour
 {
-    private Renderer rend;
-    private bool hasTriggeredJumpscare = false;
-
     public float jumpscareDelay = 1.0f; // seconds after being seen
+    private TransitionManager tm;
+    private slenderMovement mover;
+    private Animator anim;
+    public Transform player; // The player object
+    private Vector3 lastForwardDirection;
+    private AudioSource glitchAudio;
+    private bool playerTurnedAround = false;
 
-    private void Awake()
+    private void Start()
     {
-        rend = GetComponentInChildren<Renderer>(); // or GetComponent<Renderer>() if it's on the same object
+        glitchAudio = GetComponent<AudioSource>();
+        mover = GetComponent<slenderMovement>();
+        anim = GetComponent<Animator>();
+        tm = GetComponent<TransitionManager>();
+        lastForwardDirection = player.forward; // Initial facing direction
     }
 
     private void Update()
     {
-        if (!hasTriggeredJumpscare && rend.isVisible)
+        if (PlayerTurnedAround() && (playerTurnedAround == false))
         {
-            hasTriggeredJumpscare = true;
+            Debug.Log("Player turned around!");
+            playerTurnedAround = true;
             StartCoroutine(TriggerJumpscareAfterDelay());
         }
     }
 
+    bool PlayerTurnedAround()
+    {
+        // Use the dot product to check if the player has turned significantly
+        // float angle = Vector3.Angle(lastForwardDirection, player.forward);
+
+        // If the angle exceeds a certain threshold, consider it a "turn around"
+        float angle = player.transform.rotation.y;
+        return (angle > 0.9f || angle < -0.9f);
+    }
+
     private IEnumerator TriggerJumpscareAfterDelay()
     {
-        Debug.Log("Slenderman seen! Jumpscare will happen soon...");
+        glitchAudio.Play();
         yield return new WaitForSeconds(jumpscareDelay);
-        
-        // Here you trigger your jumpscare
-        Debug.Log("JUMPSCARE NOW!");
+        anim.SetBool("PlayerTurned", true);
+    }
 
-        // Example: Play scream animation, sounds, teleport, etc.
+    public void OnAttackEnd()
+    {
+        Debug.Log("Attack animation finished!");
+        anim.SetBool("HasAttacked", true);
     }
 }
