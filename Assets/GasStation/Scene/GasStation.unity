@@ -1883,7 +1883,7 @@ Transform:
   m_GameObject: {fileID: 598746320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.95, y: 9.1, z: -25.07}
+  m_LocalPosition: {x: -12.95, y: 7.65, z: -25.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2813,7 +2813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7782,10 +7782,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972180301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5fdaaac326f5045a52c8f50de7740a, type: 3}
+  m_Script: {fileID: 11500000, guid: 11f35c796a14840b0af3723d072f4e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slender: {fileID: 1434362817}
+  slenderman: {fileID: 1434362817}
   outsideZone: {fileID: 1972180301}
 --- !u!1 &1973749632
 GameObject:
