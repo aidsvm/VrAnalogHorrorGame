@@ -16,6 +16,7 @@ public class TrashCan : MonoBehaviour
         if (other.CompareTag("Trash"))
         {
             _collected++;
+            Debug.Log("Trash collected: " + _collected);
 
             // remove the trash from the scene
             Destroy(other.gameObject);

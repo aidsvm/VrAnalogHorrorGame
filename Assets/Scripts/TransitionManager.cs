@@ -48,7 +48,16 @@ public class TransitionManager : MonoBehaviour
             mover.SetPositionIndex(1);
             anim.Play("Scream");
         }
-
+        while (True)
+        {
+            L = lightsToFlicker[1];
+            if (Random.value > 0.5f)
+            {
+                L.enabled = !L.enabled;
+            }
+            float waitTime = Random.Range(0.05f, 0.3f);
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 
     private IEnumerator TransitionSequence()
