@@ -143,13 +143,9 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 0}
-<<<<<<< HEAD
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-=======
   - {fileID: 4719680376873738933, guid: 323bac28b82024d6b98a7ba6c6ac02d2, type: 2}
-  - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   - {fileID: -1440625184850040684, guid: 95c903ff013fd4ad1965f7d8373c7b6b, type: 2}
->>>>>>> main
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -169,7 +165,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.DefaultCompany.VR_HorrorGame
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -860,7 +857,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: a415ac20-873e-4604-aefc-4c3d6b4eaa99
   framebufferDepthMemorylessMode: 0

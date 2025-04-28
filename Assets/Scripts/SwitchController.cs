@@ -1,8 +1,23 @@
 using UnityEngine;
+using TMPro;                        // ← for TextMeshProUGUI
 using System.Collections;
 
 public class SwitchController : MonoBehaviour
 {
+
+    public AudioSource myAmbientAudio;
+
+    private TransitionManager _transitionManager;
+
+    void Awake()
+    {
+        // find the TransitionManager anywhere in the scene
+        _transitionManager = FindObjectOfType<TransitionManager>();
+
+        if (_transitionManager == null)
+            Debug.LogWarning("No TransitionManager found in scene!");
+    }
+
     [Header("Knob Transform")]
     public Transform mainKnob;
     [Tooltip("How far the knob moves in local Y (if you still want positional fallback)")]
@@ -24,6 +39,10 @@ public class SwitchController : MonoBehaviour
     private Vector3 downRotEuler, upRotEuler;
     private bool isOn = false;
     private Color[] originalColors;
+
+    [Header("UI Text (World-Space Canvas)")]
+    [Tooltip("Drag your wall-UI TextMeshProUGUI here")]
+    public TextMeshProUGUI instructionText;
 
     void Start()
     {
@@ -48,9 +67,6 @@ public class SwitchController : MonoBehaviour
     {
         isOn = !isOn;
 
-        // optional: move the knob up/down (uncomment if needed)
-        // mainKnob.localPosition = isOn ? upPos : downPos;
-
         // rotate the knob around its local X axis
         mainKnob.localEulerAngles = isOn ? upRotEuler : downRotEuler;
 
@@ -60,6 +76,24 @@ public class SwitchController : MonoBehaviour
                 ? originalColors[i]
                 : offColor;
 
-        // TODO: any additional power logic here
+        if (_transitionManager.ambientAudio.isPlaying)
+            _transitionManager.ambientAudio.Stop();
+
+        if (_transitionManager.glitchAudio.isPlaying)
+            _transitionManager.glitchAudio.Stop();
+
+        if (!myAmbientAudio.isPlaying)
+            myAmbientAudio.Play();
+
+        if (isOn)
+        {
+            // **All** of your power-reset instructions live here now:
+            instructionText.text =
+                "Power system reset. Continue with your tasks please.\n" +
+                "Our gas station must be in clean and immaculate conditions, " +
+                "please pick up the trash outside by the gas pumps to ensure " +
+                "a happy fueling experience!";
+        }
+
     }
 }
