@@ -48,16 +48,7 @@ public class TransitionManager : MonoBehaviour
             mover.SetPositionIndex(1);
             anim.Play("Scream");
         }
-        while (True)
-        {
-            L = lightsToFlicker[1];
-            if (Random.value > 0.5f)
-            {
-                L.enabled = !L.enabled;
-            }
-            float waitTime = Random.Range(0.05f, 0.3f);
-            yield return new WaitForSeconds(waitTime);
-        }
+        StartCoroutine(TransitionSequence2());
     }
 
     private IEnumerator TransitionSequence()
@@ -79,6 +70,19 @@ public class TransitionManager : MonoBehaviour
         foreach (var L in lightsToFlicker) {
             L.enabled = true;
             L.color   = endColor;
+        }
+    }
+    private IEnumerator TransitionSequence2()
+    {
+        while (true)
+        {
+            var L = lightsToFlicker[1];
+            if (Random.value > 0.5f)
+            {
+                L.enabled = !L.enabled;
+            }
+            float waitTime = Random.Range(0.05f, 0.3f);
+            yield return new WaitForSeconds(waitTime);
         }
     }
 }
