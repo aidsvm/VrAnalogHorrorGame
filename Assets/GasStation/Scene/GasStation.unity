@@ -1577,7 +1577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a51dff03cc34349b1fff152e2527bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTrashCount: 5
+  totalTrashCount: 1
   onAllTrashCollected:
     m_PersistentCalls:
       m_Calls:
@@ -2078,72 +2078,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &638977875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 638977876}
-  - component: {fileID: 638977877}
-  - component: {fileID: 638977878}
-  m_Layer: 0
-  m_Name: PlayerDetection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &638977876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638977875}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1434362821}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &638977877
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638977875}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &638977878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638977875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5fdaaac326f5045a52c8f50de7740a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &645525803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4888,6 +4822,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.84
       objectReference: {fileID: 0}
@@ -4927,6 +4873,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2348605131638083324, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0
@@ -4953,17 +4903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 638977876}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4061999138098054953, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1434362818}
-    - targetCorrespondingSourceObject: {fileID: 4061999138098054953, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1434362822}
   m_SourcePrefab: {fileID: 100100000, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
 --- !u!1 &1364784061
 GameObject:
@@ -5715,7 +5659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d87edd08483414a8b9d98e38ae68ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsNeeded: 4
+  itemsNeeded: 1
   stockedItems: 0
   stockArea: {fileID: 1206592001}
   onStocked:
@@ -6099,31 +6043,12 @@ MonoBehaviour:
   - {fileID: 1704098397}
   player: {fileID: 598746320}
   currPos: 0
+  rotationSpeed: 2
   onPositionChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!4 &1434362821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1010010733671478586, guid: c0ec2cd63f93487d92d6623d393c83ba, type: 3}
-  m_PrefabInstance: {fileID: 1290562986}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &1434362822
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434362817}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5c012f56091a452b8746cfb2f3fe3c37, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 5c012f56091a452b8746cfb2f3fe3c37, type: 2}
-  - {fileID: 7400000, guid: 675feb54590544dc81a97ce2e1b8bd56, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  Slender: {fileID: 1434362817}
+  outsideZone: {fileID: 1972180301}
 --- !u!1001 &1494306304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7494,10 +7419,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972180301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f35c796a14840b0af3723d072f4e9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a5fdaaac326f5045a52c8f50de7740a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slenderman: {fileID: 1434362817}
+  Slender: {fileID: 1434362817}
   outsideZone: {fileID: 1972180301}
 --- !u!1 &1973749632
 GameObject:
