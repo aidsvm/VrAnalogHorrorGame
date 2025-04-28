@@ -9,19 +9,23 @@ public class TransitionManager : MonoBehaviour
     // public PostProcessVolume postVolume;       
     // public float effectDuration = 2f;
 
-    // [Header("Audio")]
+    [Header("Audio")]
     public AudioSource ambientAudio;     
-    public AudioSource glitchAudio;           
+    public AudioSource glitchAudio;   
+    [Tooltip("Audio to play when StartHorrorTransition2 runs")]
+    public AudioSource transition2Audio;        
 
     [Header("Lighting")]
     public Light[] lightsToFlicker;
     public float flickerDuration = 1f;
     public Color endColor = Color.red;
-    public GameObject Slender;
 
-    // [Header("Spectral")]
-    // public GameObject ghostPrefab;
-    // public Transform ghostSpawnPoint;
+     [Tooltip("How long each light stays on during sequential flicker")]
+    public float seqOnDuration = 0.2f;
+    [Tooltip("Pause between each light during sequential flicker")]
+    public float seqOffDuration = 0.1f;
+
+    public GameObject Slender;
 
 
     public void StartHorrorTransition()
@@ -41,14 +45,20 @@ public class TransitionManager : MonoBehaviour
     public void StartHorrorTransition2()
     {
         Slender.SetActive(true);
-        slenderMovement mover = Slender.GetComponent<slenderMovement>();
-        Animation anim = Slender.GetComponent<Animation>();
+        var mover = Slender.GetComponent<slenderMovement>();
+        var anim  = Slender.GetComponent<Animation>();
         if (mover != null)
         {
             mover.SetPositionIndex(1);
             anim.Play("Scream");
         }
 
+        // play the new audio for transition 2
+        if (transition2Audio != null)
+            transition2Audio.Play();
+
+        // start the sequential flicker
+        StartCoroutine(SequentialFlicker());
     }
 
     private IEnumerator TransitionSequence()
@@ -71,5 +81,23 @@ public class TransitionManager : MonoBehaviour
             L.enabled = true;
             L.color   = endColor;
         }
+    }
+
+    private IEnumerator SequentialFlicker()
+    {
+    foreach (var L in lightsToFlicker)
+        L.enabled = false;
+
+    while (true)
+    {
+        foreach (var L in lightsToFlicker)
+        {
+            L.enabled = true;
+            yield return new WaitForSeconds(seqOnDuration);
+
+            L.enabled = false;
+            yield return new WaitForSeconds(seqOffDuration);
+        }
+    }
     }
 }
