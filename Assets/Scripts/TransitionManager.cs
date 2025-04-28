@@ -8,6 +8,7 @@ public class TransitionManager : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource ambientAudio;
+    public AudioSource horrorAudio;
     [HideInInspector]
     public AudioSource glitchAudio;
     [Tooltip("Audio to play when StartHorrorTransition2 runs")]
@@ -30,26 +31,24 @@ public class TransitionManager : MonoBehaviour
 
     void Start()
     {
-        // Grab the AudioSource (static/jumpscare) on Slenderman
+        // grab the static/jumpscare AudioSource on Slenderman
         glitchAudio = Slender.GetComponent<AudioSource>();
 
-        // Cache and disable the SlenderJumpscare script until event 2
+        // cache and disable the SlenderJumpscare script until Horror Event 2
         jumpscareScript = Slender.GetComponent<SlenderJumpscare>();
-        if (jumpscareScript == null)
-        {
-            Debug.LogWarning("SlenderJumpscare component missing on Slender GameObject.");
-        }
-        else
-        {
+        if (jumpscareScript != null)
             jumpscareScript.enabled = false;
-        }
     }
 
     public void StartHorrorTransition()
     {
+        // stop music for transition 1
+        ambientAudio?.Stop();
+
         Slender.SetActive(true);
         var mover = Slender.GetComponent<slenderMovement>();
-        if (mover != null) mover.SetPositionIndex(0);
+        if (mover != null)
+            mover.SetPositionIndex(0);
 
         StartCoroutine(TransitionSequence());
         transition++;
@@ -57,6 +56,9 @@ public class TransitionManager : MonoBehaviour
 
     public void StartHorrorTransition2()
     {
+        // Stop ambient audio immediately when the last trash item is placed
+        ambientAudio?.Stop();
+
         Slender.SetActive(true);
         var mover = Slender.GetComponent<slenderMovement>();
         if (mover != null)
@@ -66,11 +68,11 @@ public class TransitionManager : MonoBehaviour
         if (transition2Audio != null)
             transition2Audio.Play();
 
-        // start the flicker coroutines
+        // start flickering effects
         StartCoroutine(SequentialFlicker());
         StartCoroutine(TransitionSequence2());
 
-        // ENABLE the jumpscare detection
+        // enable the jumpscare detection now
         if (jumpscareScript != null)
             jumpscareScript.enabled = true;
 
@@ -79,11 +81,12 @@ public class TransitionManager : MonoBehaviour
 
     private IEnumerator TransitionSequence()
     {
-        ambientAudio.Stop();
+        ambientAudio?.Stop();
+        horrorAudio.Play();
         glitchAudio.Play();
 
-        float flickerEnd = Time.time + flickerDuration;
-        while (Time.time < flickerEnd)
+        float endTime = Time.time + flickerDuration;
+        while (Time.time < endTime)
         {
             foreach (var L in lightsToFlicker)
                 L.enabled = !L.enabled;
@@ -121,10 +124,8 @@ public class TransitionManager : MonoBehaviour
             {
                 i++;
                 if (i == 2) continue;
-
                 L.enabled = true;
                 yield return new WaitForSeconds(seqOnDuration);
-
                 L.enabled = false;
                 yield return new WaitForSeconds(seqOffDuration);
             }

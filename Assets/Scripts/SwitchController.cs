@@ -79,8 +79,8 @@ public class SwitchController : MonoBehaviour
         if (_transitionManager.ambientAudio.isPlaying)
             _transitionManager.ambientAudio.Stop();
 
-        if (_transitionManager.glitchAudio.isPlaying)
-            _transitionManager.glitchAudio.Stop();
+        if (_transitionManager.horrorAudio.isPlaying)
+            _transitionManager.horrorAudio.Stop();
 
         if (!myAmbientAudio.isPlaying)
             myAmbientAudio.Play();

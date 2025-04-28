@@ -9,6 +9,8 @@ public class SlenderJumpscare : MonoBehaviour
     public AudioSource ambientAudio;        // background music
     public AudioSource endScreenAudio;      // “game over” music
     public Image endScreenImage;            // full-screen “you died” UI
+    public Camera  mainCamera;       // Assign your main scene Camera here
+
 
     [Header("Settings")]
     public float detectionAngle = 20f;      // degrees cone
@@ -24,10 +26,9 @@ public class SlenderJumpscare : MonoBehaviour
         anim        = GetComponent<Animator>();
         glitchAudio = GetComponent<AudioSource>();
 
-        if (anim == null)
-            Debug.LogError("SlenderJumpscare: no Animator found on Slenderman!");
-        if (glitchAudio == null)
-            Debug.LogError("SlenderJumpscare: no AudioSource found for static noise!");
+        // Hide the UI at start
+        if (endScreenImage != null)
+            endScreenImage.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -48,8 +49,7 @@ public class SlenderJumpscare : MonoBehaviour
 
     private IEnumerator DoJumpscare()
     {
-        // stop ambience, play static
-        ambientAudio?.Stop();
+        // play static
         glitchAudio.Play();
 
         yield return new WaitForSeconds(jumpscareDelay);
@@ -62,8 +62,15 @@ public class SlenderJumpscare : MonoBehaviour
     // put an Animation Event at the end of your Scream/Jumpscare clip to call this:
     public void OnJumpscareEnd()
     {
+        // 1) Stop rendering the world
+        if (mainCamera != null)
+            mainCamera.enabled = false;
+
+        // 2) Stop static, play end-game audio
         glitchAudio.Stop();
         endScreenAudio?.Play();
+
+        // 3) Show the full-screen “you died” image
         endScreenImage.gameObject.SetActive(true);
     }
 }
