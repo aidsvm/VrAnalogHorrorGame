@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class slenderVisibility : MonoBehaviour
 {
-    public float jumpscareDelay = 1.0f; // seconds after being seen
+    public float jumpscareDelay = 0f; // seconds after being seen
     private TransitionManager tm;
     private slenderMovement mover;
     private Animator anim;

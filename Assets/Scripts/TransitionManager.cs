@@ -12,8 +12,9 @@ public class TransitionManager : MonoBehaviour
     public int transition = 0;
 
     [Header("Audio")]
-    public AudioSource ambientAudio;     
-    public AudioSource glitchAudio;   
+    public AudioSource ambientAudio;
+    [HideInInspector]   
+    public AudioSource glitchAudio;
     [Tooltip("Audio to play when StartHorrorTransition2 runs")]
     public AudioSource transition2Audio;        
 
@@ -29,6 +30,10 @@ public class TransitionManager : MonoBehaviour
 
     public GameObject Slender;
 
+    public void Start()
+    {
+        glitchAudio = Slender.GetComponent<AudioSource>();
+    }
     public void StartHorrorTransition()
     {
         Slender.SetActive(true);
